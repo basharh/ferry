@@ -11,7 +11,7 @@ import './graphql/__generated__/all_pokemon.var.gql.dart';
 import './pokemon_card.dart';
 
 class PokemonListScreen extends StatelessWidget {
-  final client = GetIt.I<TypedLink>();
+  final client = GetIt.I<Client>();
 
   @override
   Widget build(BuildContext context) {

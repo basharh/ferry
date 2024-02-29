@@ -9,6 +9,6 @@ const apiUrl = "https://pokeapi.dev";
 
 void main() async {
   final client = await initClient();
-  GetIt.I.registerLazySingleton<TypedLink>(() => client);
+  GetIt.I.registerLazySingleton<Client>(() => client);
   runApp(App());
 }

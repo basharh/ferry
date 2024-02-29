@@ -8,8 +8,27 @@ import './graphql/__generated__/pokemon_detail.req.gql.dart';
 import './graphql/__generated__/pokemon_detail.var.gql.dart';
 import './pokemon_card.dart';
 
+class DeleteIcon extends StatelessWidget {
+  DeleteIcon();
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(
+        Icons.delete,
+        size: 34,
+      ),
+      tooltip: 'Clear Cache',
+      onPressed: () {
+        final client = GetIt.I<Client>();
+        client.cache.clear();
+      },
+    );
+  }
+}
+
 class PokemonDetailScreen extends StatelessWidget {
-  final client = GetIt.I<TypedLink>();
+  final client = GetIt.I<Client>();
 
   final int id;
 
@@ -28,14 +47,15 @@ class PokemonDetailScreen extends StatelessWidget {
         error,
       ) {
         if (response!.loading)
-          return Scaffold(
-              appBar: AppBar(),
-              body: Center(child: CircularProgressIndicator()));
+          return Scaffold(body: Center(child: CircularProgressIndicator()));
 
         final pokemon = response.data?.pokemon;
 
         return Scaffold(
-          appBar: AppBar(title: Text(pokemon?.name ?? '')),
+          appBar: AppBar(
+            title: Text(pokemon?.name ?? ''),
+            actions: [DeleteIcon()],
+          ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
