@@ -49,6 +49,7 @@ class Client extends TypedLinkWithCacheAndRequestController {
     this.cache = cache ??= _defaultCache = Cache();
     this.requestController = requestController ??=
         _defaultRequestController = StreamController.broadcast();
+
     _typedLink = TypedLink.from([
       ErrorTypedLink(),
       RequestControllerTypedLink(this.requestController),

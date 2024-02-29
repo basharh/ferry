@@ -10,9 +10,11 @@ topics:
   - gql
   - ferry
 dependencies:
-  ferry: ^0.16.0-dev.1
+  ferry:
+    path: ../../packages/ferry
   gql_exec: '>=0.4.0 <2.0.0'
-  ferry_exec: ^0.6.1-dev.0+1
+  ferry_exec:
+    path: ../../packages/ferry_exec
   flutter:
     sdk: flutter
   flutter_test:
